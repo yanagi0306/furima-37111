@@ -14,8 +14,9 @@
 
 ### Association
 
-- has_many : items
-- has_many : orders
+- has_many :items
+- has_many :orders
+- has_many :address
 
 
 
@@ -26,12 +27,12 @@
 | name               | string     | null:false                    |
 | description        | text       | null:false                    |
 | status_id          | integer    | null:false                    |
-| shipping_ bearer_id| integer     | null:false                   |
+| shipping_ bearer_id| integer    | null:false                    |
 | day_id             | integer    | null:false                    |
-| price              | string     | null:false                    |
+| price              | integer    | null:false                    |
 | area_id            | integer    | null:false                    |
 | category_name_id   | integer    | null:false                    |
-| user_id            | references | null:false,foreign_key: true  |
+| user               | references | null:false,foreign_key: true  |
 
 
 ### Association
@@ -47,16 +48,15 @@
 
 | Colum              | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| item_id            | references | null:false,foreign_key: true   |
-| address_id         | references | null:false,foreign_key: true   |
-| user_id            | references | null:false,foreign_key: true   |
+| item               | references | null:false,foreign_key: true   |
+| user               | references | null:false,foreign_key: true   |
 
 
 ### Association
 
-- has_one :item
+
 - belongs_to :user
-- belongs_to :address
+- has_one :address
 
 
 
@@ -71,10 +71,10 @@
 | house_number       | string     | null:false                     |
 | building           | string     | null:false                     |
 | prefecture_id      | integer    | null:false                     |
-| order_id           | references | null:false,foreign_key: true   |
+| user               | references | null:false,foreign_key: true   |
 ¥
 
 
 ### Association
 
-- has_one :order
+- has_one :user
