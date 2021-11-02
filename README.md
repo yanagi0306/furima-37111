@@ -16,7 +16,7 @@
 
 - has_many :items
 - has_many :orders
-- has_many :address
+
 
 
 
@@ -52,14 +52,15 @@
 | ------------------ | ---------- | ------------------------------ |
 | item               | references | null:false,foreign_key: true   |
 | user               | references | null:false,foreign_key: true   |
+| address            | references | null:false,foreign_key: true   |
 
 
 ### Association
 
 
 - belongs_to :user
-- has_one :address
-
+- has_one :item
+- belongs_to :address
 
 
 
@@ -73,10 +74,10 @@
 | house_number       | string     | null:false                     |
 | building           | string     | null:false                     |
 | prefecture_id      | integer    | null:false                     |
-| user               | references | null:false,foreign_key: true   |
-¥
+| order              | references | null:false,foreign_key: true   |
+
 
 
 ### Association
 
-- has_one :user
+- has_one :order
