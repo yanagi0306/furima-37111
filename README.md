@@ -2,14 +2,15 @@
 
 ## Usersテーブル　
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| nickname           | string | null:false  |
-| email              | string | null:false  |
-| encrypted_password | string | null:false  |
-| full_name          | string | null:false  |
-| kana_name          | string | null:false  |
-| birthday           | date   | null:false  |
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| nickname           | string | null:false                |
+| email              | string | null:false,unique:true    |
+| encrypted_password | string | null:false                |
+| first_name         | string | null:false                |
+| last_name          | string | null:false                |
+| kana_name          | string | null:false                |
+| birthday           | date   | null:false                |
 
 ### Association
 
@@ -24,10 +25,12 @@
 | ------------------ | ---------- | ----------------------------- |
 | name               | string     | null:false                    |
 | description        | text       | null:false                    |
-| status             | string     | null:false                    |
-| shipping_area      | string     | null:false                    |
-| shipping_data      | string     | null:false                    |
-| cost               | string     | null:false                    |
+| status_id          | integer    | null:false                    |
+| shipping_ bearer_id| integer     | null:false                   |
+| day_id             | integer    | null:false                    |
+| price              | string     | null:false                    |
+| area_id            | integer    | null:false                    |
+| category_name_id   | integer    | null:false                    |
 | user_id            | references | null:false,foreign_key: true  |
 
 
@@ -35,8 +38,6 @@
 
 - belongs_to :order
 - belongs_to :user
-- belongs_to :category
-- belongs_to :area
 
 
 
@@ -56,36 +57,7 @@
 - has_one :item
 - belongs_to :user
 - belongs_to :address
-- belongs_to :credit
 
-
-
-
-## Categoryesテーブル
-
-| Colum              | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| category_name      | string     | null:false                     |
-| item_id            | references | null:false,foreign_key: true   |
-
-### Association
-
-- has_one :item
-
-
-
-
-## Creditsテーブル
-
-| Colum              | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| credit_card_date   | string     | null:false                     |
-| order_id           | references | null:false,foreign_key: true   |
-
-
-### Association
-
-- has_one :order
 
 
 
@@ -98,40 +70,11 @@
 | municipal          | string     | null:false                     |
 | house_number       | string     | null:false                     |
 | building           | string     | null:false                     |
+| prefecture_id      | integer    | null:false                     |
 | order_id           | references | null:false,foreign_key: true   |
-| prefectures_id     | references | null:false,foreign_key: true   |
+¥
 
 
 ### Association
 
 - has_one :order
-- belongs_to :prefectures
-
-
-
-
-## Prefecturesテーブル
-
-| Colum              | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| prefecture_name    | string     | null:false                     |
-| addres_id          | references | null:false,foreign_key: true   |
-
-
-### Association
-
-- has_one :address
-
-
-
-## Areaテーブル
-
-| Colum              | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| shipping_area      | string     | null:false                     |
-| item_id            | references | null:false,foreign_key: true   |
-
-
-### Association
-
-- has_one :item
