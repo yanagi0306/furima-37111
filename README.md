@@ -73,7 +73,7 @@
 | postal_code        | string     | null:false                     |
 | municipal          | string     | null:false                     |
 | house_number       | string     | null:false                     |
-| building           | string     | null:false                     |
+| building           | string     |                                |
 | prefecture_id      | integer    | null:false                     |
 | order              | references | null:false,foreign_key: true   |
 
