@@ -8,6 +8,7 @@ function post() {
     price_tax.innerHTML = price_tax_value;
     price_profit.innerHTML = price_profit_value;
   }
+
   if (price.value != "") {
     add();
   }
