@@ -9,17 +9,19 @@ class Item < ApplicationRecord
   belongs_to :user
 
 
-  validates :name,:description,presence: true
+  validates :name,length: {maximum:40},presence: true
 
-  validates :status_id,numericality: { only_integer: true,greater_than_or_equal_to: 2, less_than_or_equal_to: 7 }
+  validates :description,length: {maximum:1000},presence: true
 
-  validates :shipping_bearer_id,numericality: { only_integer: true,greater_than_or_equal_to: 2, less_than_or_equal_to: 3 }
+  validates :status_id,numericality: { only_integer: true,greater_than_or_equal_to: 2, less_than_or_equal_to: 1000 },numericality: { other_than: 1 , message: "can't be blank"}
 
-  validates :shipping_day_id,numericality: { only_integer: true,greater_than_or_equal_to: 2, less_than_or_equal_to: 4 }
+  validates :shipping_bearer_id,numericality: { only_integer: true,greater_than_or_equal_to: 2, less_than_or_equal_to: 3 },numericality: { other_than: 1 , message: "can't be blank"}
 
-  validates :prefecture_id, numericality: { only_integer: true,greater_than_or_equal_to: 2, less_than_or_equal_to: 48 }
+  validates :shipping_day_id,numericality: { only_integer: true,greater_than_or_equal_to: 2, less_than_or_equal_to: 4 },numericality: { other_than: 1 , message: "can't be blank"}
 
-  validates :category_name_id, numericality: { only_integer: true,greater_than_or_equal_to: 2, less_than_or_equal_to: 11 }
+  validates :prefecture_id, numericality: { only_integer: true,greater_than_or_equal_to: 2, less_than_or_equal_to: 48 },numericality: { other_than: 1 , message: "can't be blank"}
+
+  validates :category_name_id, numericality: { only_integer: true,greater_than_or_equal_to: 2, less_than_or_equal_to: 11 },numericality: { other_than: 1 , message: "can't be blank"}
 
 
   validates :price, numericality: { only_integer: true,greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
