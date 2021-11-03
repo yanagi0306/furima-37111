@@ -8,6 +8,6 @@ class User < ApplicationRecord
           validates :first_name,:last_name,presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ , allow_blank: true}
           validates :kana_first_name,:kana_last_name,presence: true, format: { with: /\A[ァ-ヶー]+\z/ , allow_blank: true}
           validates :birthday,presence: true
-          validates :password, format:{with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]/}
+          validates :password, format:{with: /\A(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]+\z/i}
 
 end
