@@ -46,7 +46,7 @@ class OrderAddress
               other_than: 1,
               message: "can't be blank",
             },
-            allow_blank: true
+            allow_blank: true,
 
   def save
     order = Order.create(item_id: item_id, user_id: user_id)
