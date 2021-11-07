@@ -14,18 +14,16 @@ const pay = () => {
     };
 
     Payjp.createToken(card, (status, response) => {
-      console.log(response)
       if (status == 200) {
         const token = response.id;
-        document.getElementById('token').value = token
-        document.getElementById('card-number').removeAttribute('name')
-        document.getElementById('card-exp-month').removeAttribute('name')
-        document.getElementById('card-exp-year').removeAttribute('name')
-        document.getElementById('card-cvc').removeAttribute('name')
-        formResult.submit();
+        document.getElementById("token").value = token;
+        document.getElementById("card-number").removeAttribute("name");
+        document.getElementById("card-exp-month").removeAttribute("name");
+        document.getElementById("card-exp-year").removeAttribute("name");
+        document.getElementById("card-cvc").removeAttribute("name");
       }
+      formResult.submit();
     });
-
   });
 };
 

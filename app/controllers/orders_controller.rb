@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :check
   def index
+
     @order_address = OrderAddress.new
   end
   def create

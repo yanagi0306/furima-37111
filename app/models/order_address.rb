@@ -1,5 +1,4 @@
 class OrderAddress
-
   include ActiveModel::Model
   attr_accessor :postal_code,
                 :municipal,
@@ -18,7 +17,6 @@ class OrderAddress
             :phone_number,
             :item_id,
             :user_id,
-            :token,
             presence: true
   validates :postal_code,
             format: {
@@ -46,7 +44,11 @@ class OrderAddress
               other_than: 1,
               message: "can't be blank",
             },
-            allow_blank: true,
+            allow_blank: true
+  validates :token,
+            presence: {
+              message: 'is missing.Your credit card information is invalid',
+            }
 
   def save
     order = Order.create(item_id: item_id, user_id: user_id)
@@ -58,7 +60,6 @@ class OrderAddress
       phone_number: phone_number,
       building: building,
       order_id: order.id,
-
     )
   end
 end
