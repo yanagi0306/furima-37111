@@ -28,7 +28,7 @@ class Item < ApplicationRecord
             :category_name_id,
             numericality: {
               other_than: 1,
-              message: "can't be blank",
+              message: "can't be blank"
             },
             allow_blank: true
 
@@ -41,7 +41,7 @@ class Item < ApplicationRecord
               only_integer: true,
               greater_than_or_equal_to: 2,
               less_than_or_equal_to: 7,
-              message: 'Please make it a positive number from 2 to 7',
+              message: 'Please make it a positive number from 2 to 7'
             },
             allow_blank: true
 
@@ -50,7 +50,7 @@ class Item < ApplicationRecord
               only_integer: true,
               greater_than_or_equal_to: 2,
               less_than_or_equal_to: 3,
-              message: 'Please make it a positive number from 2 to 3',
+              message: 'Please make it a positive number from 2 to 3'
             },
             allow_blank: true
 
@@ -59,7 +59,7 @@ class Item < ApplicationRecord
               only_integer: true,
               greater_than_or_equal_to: 2,
               less_than_or_equal_to: 4,
-              message: 'Please make it a positive number from 2 to 4',
+              message: 'Please make it a positive number from 2 to 4'
             },
             allow_blank: true
 
@@ -68,7 +68,7 @@ class Item < ApplicationRecord
               only_integer: true,
               greater_than_or_equal_to: 2,
               less_than_or_equal_to: 48,
-              message: 'Please make it a positive number from 2 to 48',
+              message: 'Please make it a positive number from 2 to 48'
             },
             allow_blank: true
 
@@ -77,7 +77,7 @@ class Item < ApplicationRecord
               only_integer: true,
               greater_than_or_equal_to: 2,
               less_than_or_equal_to: 11,
-              message: 'Please make it a positive number from 2 to 11',
+              message: 'Please make it a positive number from 2 to 11'
             },
             allow_blank: true
 
@@ -86,7 +86,7 @@ class Item < ApplicationRecord
               only_integer: true,
               greater_than_or_equal_to: 300,
               less_than_or_equal_to: 9_999_999,
-              message: 'Please make it a positive number from 300 to 9999999',
+              message: 'Please make it a positive number from 300 to 9999999'
             },
             allow_blank: true
 end

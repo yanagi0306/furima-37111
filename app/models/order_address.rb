@@ -21,13 +21,13 @@ class OrderAddress
   validates :postal_code,
             format: {
               with: /\A[0-9]{3}-[0-9]{4}\z/,
-              message: 'is invalid. Include hyphen(-)',
+              message: 'is invalid. Include hyphen(-)'
             },
             allow_blank: true
   validates :phone_number,
             format: {
               with: /\A\d{10,11}\z/,
-              message: 'is invalid. Include hyphen(-)',
+              message: 'is invalid. Include hyphen(-)'
             },
             allow_blank: true
 
@@ -36,18 +36,18 @@ class OrderAddress
               only_integer: true,
               greater_than_or_equal_to: 2,
               less_than_or_equal_to: 48,
-              message: 'Please make it a positive number from 2 to 48',
+              message: 'Please make it a positive number from 2 to 48'
             },
             allow_blank: true
   validates :prefecture_id,
             numericality: {
               other_than: 1,
-              message: "can't be blank",
+              message: "can't be blank"
             },
             allow_blank: true
   validates :token,
             presence: {
-              message: 'is missing.Your credit card information is invalid',
+              message: 'is missing.Your credit card information is invalid'
             }
 
   def save
@@ -59,7 +59,7 @@ class OrderAddress
       prefecture_id: prefecture_id,
       phone_number: phone_number,
       building: building,
-      order_id: order.id,
+      order_id: order.id
     )
   end
 end

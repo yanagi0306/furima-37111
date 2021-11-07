@@ -29,17 +29,17 @@ RSpec.describe OrderAddress, type: :model do
       it 'postal_codeが-(ハイフン)がない' do
         @order_address.postal_code = '3360001'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+        expect(@order_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
       end
       it '数値が多い' do
         @order_address.postal_code = '336-0015555'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+        expect(@order_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
       end
       it '全角だとだめ' do
         @order_address.postal_code = '３３６-００１５'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+        expect(@order_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
       end
     end
     context 'municipal関係' do
@@ -95,17 +95,17 @@ RSpec.describe OrderAddress, type: :model do
       it '数値が多い' do
         @order_address.phone_number = '0701234567890'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number is invalid. Include hyphen(-)")
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid. Include hyphen(-)')
       end
       it '数値が少ない' do
         @order_address.phone_number = '0701234'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number is invalid. Include hyphen(-)")
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid. Include hyphen(-)')
       end
       it '全角だとだめ' do
         @order_address.phone_number = '０９０００１００１５５'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number is invalid. Include hyphen(-)")
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid. Include hyphen(-)')
       end
     end
     it 'userが紐付いていないと保存できないこと' do
@@ -118,10 +118,10 @@ RSpec.describe OrderAddress, type: :model do
       @order_address.valid?
       expect(@order_address.errors.full_messages).to include("Item can't be blank")
     end
-    it "tokenが空では登録できないこと" do
+    it 'tokenが空では登録できないこと' do
       @order_address.token = nil
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Token is missing.Your credit card information is invalid")
+      expect(@order_address.errors.full_messages).to include('Token is missing.Your credit card information is invalid')
     end
   end
 end

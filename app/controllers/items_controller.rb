@@ -20,7 +20,8 @@ class ItemsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     if @item.update(item_params)
@@ -29,7 +30,10 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
-  def show; end
+
+  def show
+  end
+
   def destroy
     @item.destroy
     redirect_to root_path
@@ -38,9 +42,7 @@ class ItemsController < ApplicationController
   private
 
   def check
-    if @item.user.id != current_user.id || @item.order.present?
-    redirect_to root_path
-    end
+    redirect_to root_path if @item.user.id != current_user.id || @item.order.present?
   end
 
   def set_item
@@ -59,7 +61,7 @@ class ItemsController < ApplicationController
         :price,
         :prefecture_id,
         :category_name_id,
-        :image,
+        :image
       )
       .merge(user_id: current_user.id)
   end

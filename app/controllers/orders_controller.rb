@@ -2,9 +2,9 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :check
   def index
-
     @order_address = OrderAddress.new
   end
+
   def create
     @order_address = OrderAddress.new(order_address_params)
     if @order_address.valid?
@@ -27,21 +27,19 @@ class OrdersController < ApplicationController
         :house_number,
         :prefecture_id,
         :phone_number,
-        :building,
+        :building
       )
       .merge(
         token: params[:token],
         user_id: current_user.id,
         item_id: params[:item_id],
-        user_id: current_user.id,
+        user_id: current_user.id
       )
   end
 
   def check
     @item = Item.find(params[:item_id])
-    if @item.order.present? || @item.user_id == current_user.id
-      redirect_to root_path
-    end
+    redirect_to root_path if @item.order.present? || @item.user_id == current_user.id
   end
 
   def pay_item
