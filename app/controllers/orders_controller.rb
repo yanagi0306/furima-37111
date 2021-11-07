@@ -32,8 +32,7 @@ class OrdersController < ApplicationController
       .merge(
         token: params[:token],
         user_id: current_user.id,
-        item_id: params[:item_id],
-        user_id: current_user.id
+        item_id: params[:item_id]
       )
   end
 
