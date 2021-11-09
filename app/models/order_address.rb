@@ -13,21 +13,20 @@ class OrderAddress
   validates :postal_code,
             :municipal,
             :house_number,
-            :prefecture_id,
             :phone_number,
-            :item_id,
-            :user_id,
             presence: true
+
+  validates :item_id,:user_id,presence:{message:'が紐付いていません'}
   validates :postal_code,
             format: {
               with: /\A[0-9]{3}-[0-9]{4}\z/,
-              message: 'is invalid. Include hyphen(-)'
+              message: 'の入力は-をつけてください(入力は半角でお願いします)'
             },
             allow_blank: true
   validates :phone_number,
             format: {
               with: /\A\d{10,11}\z/,
-              message: 'is invalid. Include hyphen(-)'
+              message: 'の入力が無効です(入力は半角でお願いします)'
             },
             allow_blank: true
 
@@ -36,18 +35,12 @@ class OrderAddress
               only_integer: true,
               greater_than_or_equal_to: 2,
               less_than_or_equal_to: 48,
-              message: 'Please make it a positive number from 2 to 48'
-            },
-            allow_blank: true
-  validates :prefecture_id,
-            numericality: {
-              other_than: 1,
-              message: "can't be blank"
-            },
-            allow_blank: true
+              message: 'を選択してください'
+            }
+
   validates :token,
             presence: {
-              message: 'is missing.Your credit card information is invalid'
+              message: 'の入力が無効です'
             }
 
   def save
